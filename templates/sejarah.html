@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends 'blog_base.html' %}
+
+{% block judul %}Sejarah Stasiun Geofisika Ternate {% endblock %}
+{% block blog_content %} 
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+        </ol>
+        <h2>Sejarah</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+
+            <div class="entry-img">
+              <img src="/static/assets/img/kantor-bg-min.jpg" alt="" class="img-fluid">
+            </div>
+            <article class="entry entry-single">
+
+              <h2 class="entry-title">
+                <a href="#">Sejarah Stasiun Geofisika Ternate</a>
+              </h2>
+              <div class="entry-content">
+                <p>
+                  &emsp;&emsp;Stasiun Geofisika Kelas III Ternate mulai beroperasi sejak tahun 1987
+                  dibawah Lembaga Meteorologi dan Geofisika Jakarta, yang di masa awalnya
+                  hanya dilengkapi dengan peralatan pengamatan gempabumi single station dengan
+                  sistem analog berupa Visual Seismograph Short Period KINEMETRIC (SPS-1),
+                  Strong Motion Accelerograph (SMA-1) dan pada tahun 1996 Portable
+                  Seismograph (PS-2) mulai dioperasikan sebagai peralatan survey ketika terjadi
+                  gempabumi merusak. Pada tahun 2007 peralatan dengan sistem digital dari
+                  TAIDE dipasang dan mulai dioperasikan, peralatan tersebut yaitu Digital
+                  Seismograph Short Period TAIDE (TDS) dan Portable Accelerograph TAIDE
+                  (TDL-303QS).                   
+                </p>
+
+                <p>
+                  &emsp;&emsp;Penambahan peralatan digital ini juga diikuti dengan peralatan
+                  Digital Seismograph Broadband GFZ yang dibangun secara berjaringan dan
+                  terintegrasi dengan sistem InaTEWS, kemudian pada tahun 2013 peralatan
+                  Accelerograph Digital TITAN (non colocated) ditambahkan untuk memperkuat
+                  kegiatan pengamatan gempabumi. Pada tahun 2012 mulai dioperasikan peralatan
+                  analisa gempabumi yaitu satu set komputer dengan software JISVIEW, kemudian
+                  di tahun 2015 diperkuat lagi dengan pemasangan peralatan Seiscomp3. Mulai
+                  tahun 2010 pengamatan listrik udara mulai dilakukan, yaitu dengan
+                  mengoperasikan peralatan Lightning Detector dengan Software Ligthning2000,
+                  kemudian di tahun 2015 pengamatan hilal juga mulai rutin dilakukan tiap
+                  bulannya, yaitu dengan 1 set peralatan teropong hilal
+                </p>
+
+                
+
+              </div>
+
+              
+
+            </article><!-- End blog entry -->
+
+            
+
+          </div><!-- End blog entries list -->
+
+          {% block sidebar %} 
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+              <h3 class="sidebar-title">Berita Terkini</h3>
+              <div class="sidebar-item recent-posts">
+                {% for berita in listberita %}
+                <div class="post-item clearfix">
+                  <img src="/static/upload/{{berita.6}}" alt="">
+                  <h4><a href="#">{{berita.2}}</a></h4>
+                  <time>{{berita.1}}</time>
+                </div>
+                {% endfor %}
+
+                
+
+              </div><!-- End sidebar recent posts-->
+
+              
+
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+          {% endblock %}
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+  {% endblock %}
+
+  
+
+</html>

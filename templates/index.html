@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>SI-GEO | Sistem Informasi Geofisika</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/img/logo_only.png') }}">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='assets/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/adminlte/adminlte.min.css') }}">
+  
+  <link href="{{ url_for('static', filename='assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> -->
+
+  <!-- Template Main CSS File -->
+  <link href="{{ url_for('static', filename='assets/css/style.css') }}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Anyar
+  * Updated: May 30 2023 with Bootstrap v5.3.0
+  * Template URL: https://bootstrapmade.com/anyar-free-multipurpose-one-page-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-left ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a href="/" class="logo "><img src="{{ url_for('static', filename='assets/img/logobmkg-white.png') }}" alt="" class="img-fluid">
+        Stasiun geofisika ternate</a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="/stakeholder">Stakeholder</a></li>
+          <li class="dropdown"><a href="#"><span>Application</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="https://sigeo.stageofternate.com">SI-GEMPA V2.0</a></li>
+              <li><a href="#">SI-PETIR V2.0</a></li>
+            </ul>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-cntent-center">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+      
+      <div class="row">
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+          </i><h3 class="title pt-2" style="color: #fff;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-activity" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z"/>
+            </svg>
+             Gempabumi Terkini</h3>
+        </div>
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); ">
+          <div class="icon-box">
+            <div id="map1" class="mb-3 mt-3" style="width: 100%; height: 500px; position: relative; border-radius: 8px;"></div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+          </i><h3 class="title pt-2" style="color: #fff;"><i class="fas fa-bolt"></i> Sambaran Petir</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+          <div class="info-box" style="background-color:rgba(97, 150, 196, 0.538);">
+            <span class="info-box-icon bg-success elevation-1">
+              <i class="fas fa-bolt"></i>
+            </span>
+
+            <div class="info-box-content" style="color: #fff;">
+              <span class="info-box-text" ><h5><strong>Total Sambaran</strong></h5></span>
+              <span class="info-box-text">
+                <h5>{{total.0}} sambaran</h5>
+                <!-- <h5>{{jml_gempa}} sambaran</h5> -->
+              </span>
+            </div>
+            
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+          <div class="info-box" style="background-color:rgba(97, 150, 196, 0.538);">
+            <span class="info-box-icon bg-danger elevation-1">
+              <i class="fas fa-bolt"></i>
+            </span>
+
+            <div class="info-box-content" style="color: #fff;">
+              <span class="info-box-text" ><h5><strong>Cloud to Ground +</strong></h5></span>
+              <span class="info-box-text">
+                <h5>{{total.1}} sambaran</h5>
+                <!-- <h5>{{jml_gempa}} sambaran</h5> -->
+              </span>
+            </div>
+            
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+          <div class="info-box" style="background-color:rgba(97, 150, 196, 0.538);">
+            <span class="info-box-icon bg-warning elevation-1">
+              <i class="fas fa-bolt"></i>
+            </span>
+
+            <div class="info-box-content" style="color: #fff;">
+              <span class="info-box-text" ><h5><strong>Cloud to Ground -</strong></h5></span>
+              <span class="info-box-text">
+                <h5>{{total.2}} sambaran</h5>
+                <!-- <h5>{{jml_gempa}} sambaran</h5> -->
+              </span>
+            </div>
+            
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+          <div class="info-box" style="background-color:rgba(97, 150, 196, 0.538);">
+            <span class="info-box-icon bg-primary elevation-1">
+              <i class="fas fa-bolt"></i>
+            </span>
+
+            <div class="info-box-content" style="color: #fff;">
+              <span class="info-box-text" ><h5><strong>Intercloud</strong></h5></span>
+              <span class="info-box-text">
+                <h5>{{total.3}} sambaran</h5>
+                <!-- <h5>{{jml_gempa}} sambaran</h5> -->
+              </span>
+            </div>
+            
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+
+        
+
+      
+      </div>
+      <div class="row">
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+          </i><h3 class="title pt-2" style="color: #fff;"><i class="fas fa-sunrise"></i> Terbit dan Terbenam Matahari</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="carousel-container">
+              <div class="row mt-0">
+                <div class="col-6">
+                  <div class="p-3 pt-0 card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+                    <i style="margin-bottom: -45px;" class="bi bi-sunrise fa-8x"></i><h4 class="animate__animated animate__fadeInUp mt-0">Sunrise</h4>
+                    <h5 class="animate__animated animate__fadeInUp mt-0">06:37 WIT</h5>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="p-3 pt-0 card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+                    <i style="margin-bottom: -45px;" class="bi bi-sunset fa-8x"></i><h4 class="animate__animated animate__fadeInUp mt-0">Sunset</h4>
+                    <h5 class="animate__animated animate__fadeInUp mt-0">18:41 WIT</h5>
+                  </div>
+                </div>
+              </div>
+              <h2 class="animate__animated animate__fadeInDown">Ternate</h2>
+            </div>
+          </div>
+
+          <!-- Slide 1 -->
+          <div class="carousel-item">
+            <div class="carousel-container">
+              <div class="row mt-0">
+                <div class="col-6">
+                  <div class="p-3 pt-0 card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+                    <i style="margin-bottom: -45px;" class="bi bi-sunrise fa-8x"></i><h4 class="animate__animated animate__fadeInUp mt-0">Sunrise</h4>
+                    <h5 class="animate__animated animate__fadeInUp mt-0">06:37 WIT</h5>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="p-3 pt-0 card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+                    <i style="margin-bottom: -45px;" class="bi bi-sunset fa-8x"></i><h4 class="animate__animated animate__fadeInUp mt-0">Sunset</h4>
+                    <h5 class="animate__animated animate__fadeInUp mt-0">18:41 WIT</h5>
+                  </div>
+                </div>
+              </div>
+              <h2 class="animate__animated animate__fadeInDown">Tidore</h2>
+            </div>
+          </div>
+
+          <!-- Slide 1 -->
+          <div class="carousel-item">
+            <div class="carousel-container">
+              <div class="row mt-0">
+                <div class="col-6">
+                  <div class="p-3 pt-0 card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+                    <i style="margin-bottom: -45px;" class="bi bi-sunrise fa-8x"></i><h4 class="animate__animated animate__fadeInUp mt-0">Sunrise</h4>
+                    <h5 class="animate__animated animate__fadeInUp mt-0">06:37 WIT</h5>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="p-3 pt-0 card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+                    <i style="margin-bottom: -45px;" class="bi bi-sunset fa-8x"></i><h4 class="animate__animated animate__fadeInUp mt-0">Sunset</h4>
+                    <h5 class="animate__animated animate__fadeInUp mt-0">18:41 WIT</h5>
+                  </div>
+                </div>
+              </div>
+              <h2 class="animate__animated animate__fadeInDown">Jailolo</h2>
+            </div>
+          </div>
+    
+          
+    
+          <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+          </a>
+    
+          <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+          </a>
+    
+        </div>
+      </div>
+
+    </div>
+    
+  </section><!-- End Hero -->
+
+  
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    
+
+    
+
+    <div class="container">
+      <h4><br><br><h4>Useful Links</h4></h4>
+      <div class="copyright">
+        &copy; Copyright <strong><span>Stasiun Geofisika Ternate</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/anyar-free-multipurpose-one-page-bootstrap-theme/ -->
+        Designed by <a href="">bayumerdeka</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  
+
+  <!-- Vendor JS Files -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  <script src="{{ url_for('static', filename='assets/vendor/aos/aos.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/php-email-form/validate.js') }}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+  <script>
+    
+    {% for eq in lasteq %}
+    var lat = {{eq.3}}
+    var long = {{eq.4}}
+    var map = L.map('map1').setView([lat,long], 7);
+    {% endfor %}
+    
+    var icon_last = L.icon({iconUrl: '{{ url_for('static', filename='assets/img/earthquake.png') }}', iconSize: [40,40]});
+    
+
+    {% for eq in lasteq %}
+    var lat = {{eq.3}}
+    var long = {{eq.4}}
+    L.marker([lat,long], {icon: icon_last},{zIndex: 5000000}).addTo(map).setZIndexOffset(1000).bindPopup("<b>{{infogempa}}<b>").openPopup();;
+    {% endfor %}
+    
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+        attribution: '&copy; <a href="https://www.bmkg.go.id">Badan Meteorologi Klimatologi dan Geofisika</a>'
+    }).addTo(map);
+  </script>
+
+
+
+</body>
+
+</html>

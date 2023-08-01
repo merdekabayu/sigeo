@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends 'headfoot.html' %}
+
+{% block judul %}SI-GEO | Tambah Berita{% endblock %}
+{% block adminheader %}
+<li><a class="nav-link scrollto active" href="/tambahberita">Tambah Berita</a></li>
+<li><a class="nav-link scrollto" href="/hilal">Data Hilal</a></li>
+{% endblock %}
+{% block logout %}<a href="/logout"><i style="font-size: 20px;" class="fas fa-sign-out-alt"></i></a>{% endblock %}
+{% block content %}
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-cntent-center">
+    <div class="container">
+      <div class="row">
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+          </i><h3 class="title pt-2" style="color: #fff;">
+            <i class="fas fa-plus"></i> Tambah Berita</h3>
+        </div>
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); ">
+          <div class="icon-box">
+            <div class="mb-3 mt-3" style="width: 100%; position: relative; border-radius: 8px;">
+              <form action="/tambahberita/submit" method="POST" enctype = "multipart/form-data">
+                <div class="row">
+                  <div class="col-lg-12">
+                    
+                    <div class="row mt-4">
+                      <div class="col-2">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Judul Berita :</label>
+                      </div>
+                      <div class="col-6">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="Judul Berita" name="judul" value="" />
+                      </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-2">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Tanggal :</label>
+                      </div>
+                      <div class="col-3">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="yyyy-mm-dd" name="tanggal" value="" />
+                      </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-2">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Penulis :</label>
+                      </div>
+                      <div class="col-3">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="" name="penulis" value="" />
+                      </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-2">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Gambar :</label>
+                      </div>
+                      <div class="custom-file col-3">
+                        <input type="file" name="gambar" class="custom-file-input" id="customFile" value="">
+                        <label class="custom-file-label" for="customFile">jpg/png</label>
+                      </div>
+                      <div class="col-2">
+                        <label class="mt-1" style="text-align: left; color: #fff;">size: 1300x700 px</label>
+                      </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-2">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Isi Paragraf 1 :</label>
+                      </div>
+                      <div class="col-6">
+                        <textarea style="font-size: 12px;" class="form-control" id="exampleFormControlTextarea1" rows="8" name="isi1"></textarea>
+                      </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-2">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Isi Paragraf 2 :</label>
+                      </div>
+                      <div class="col-6">
+                        <textarea style="font-size: 12px;" class="form-control" id="exampleFormControlTextarea1" rows="8" name="isi2"></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-4"></div>
+                  <div class="col-4"></div>
+                  <div class="col-lg-4 float-right">
+                    <label for="Input"></label>
+                    <div class="btn-group w-100 pt-2">
+                      <button type="submit" class="btn btn-success col start">
+                        <i class="fas fa-plus"></i>
+                        <span>Submit</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); ">
+          <div class="icon-box">
+            <div class="row">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th style="width: 2px;" scope="col">Tanggal</th>
+                    <th style="width: 100px;" scope="col">Judul</th>
+                    <th style="width: 10px;" scope="col">Penulis</th>
+                    <th style="width: 20px;" scope="col">Gambar</th>
+                    <th style="width: 5px;" scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for par in data %}
+                  <tr>
+                    <th scope="row">{{par.1}}</th>
+                    <td>{{par.2}}</td>
+                    <td>{{par.5}}</td>
+                    <td><img style="width: 70%;" src="static/upload/{{par.6}}" alt="" class="img-fluid"></td>
+                    <td>
+                      <a href="/hapus/{{par.0}}" class="btn btn-danger start" role="button" onclick="return confirm('Anda yakin ingin hapus?')" aria-pressed="true"> 
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+      
+
+    </div>
+    
+  </section><!-- End Hero -->
+
+  
+  {% endblock %}
+
+</html>

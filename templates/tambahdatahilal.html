@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends 'headfoot.html' %}
+
+{% block judul %}SI-GEO | Tambah Data Hilal{% endblock %}
+{% block adminheader %}
+<li><a class="nav-link scrollto" href="/tambahberita">Tambah Berita</a></li>
+<li><a class="nav-link scrollto active" href="/hilal">Data Hilal</a></li>
+{% endblock %}
+{% block logout %}<a href="/logout"><i style="font-size: 20px;" class="fas fa-sign-out-alt"></i></a>{% endblock %}
+
+{% block content %}
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-cntent-center">
+    <div class="container">
+      <div class="row">
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+          </i><h3 class="title pt-2" style="color: #fff;">
+            <i class="fas fa-plus"></i> Add Data Hilal</h3>
+        </div>
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); ">
+          <div class="icon-box">
+            <div class="mb-3 mt-3" style="width: 100%; position: relative; border-radius: 8px;">
+              <form action="/hilal/submit" method="POST" enctype = "multipart/form-data">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="row mt-4">
+                      <div class="col-lg-6 col-sm-6">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Bulan Hijriah :</label>
+                      </div>
+                      <div class="col-lg-6 col-sm-6">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="" name="bulan_hij" value="" />
+                      </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-lg-6 col-sm-6">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Tahun Hijriah :</label>
+                      </div>
+                      <div class="col-lg-3 col-sm-6">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="" name="tahun_hij" value="" />
+                      </div>
+                      <div class="col-lg-1 col-sm-1 mt-2" style="margin-left: -30px;"><p><b>H</b></p></div>
+                    </div>
+                    <div class="row mt-1">
+                      <div class="col-lg-6 col-sm-6">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Tanggal Pengamatan :</label>
+                      </div>
+                      <div class="col-lg-6 col-sm-6">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="yyyy-mm-dd" name="t_obs" value="" />
+                      </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-lg-6 col-sm-6">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Waktu Konjungsi Bulan :</label>
+                      </div>
+                      <div class="col-lg-6 col-sm-6">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="yyyy-mm-dd HH:MM:SS" name="t_konj" value="" />
+                      </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-lg-6 col-sm-6">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Waktu Terbenam Matahari :</label>
+                      </div>
+                      <div class="col-lg-6 col-sm-6">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="yyyy-mm-dd HH:MM:SS" name="ttm_matahari" value="" />
+                      </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-lg-6 col-sm-6">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Waktu Terbenam Bulan :</label>
+                      </div>
+                      <div class="col-lg-6 col-sm-6">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="yyyy-mm-dd HH:MM:SS" name="ttm_bulan" value="" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="row mt-4">
+                      <div class="col-lg-6 col-sm-6">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Azimuth Matahari :</label>
+                      </div>
+                      <div class="col-lg-3 col-sm-6">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="" name="az_matahari" value="" />
+                      </div>
+                      <div class="col-lg-1 col-sm-1" style="margin-left: -30px;"><p>&deg</p></div>
+                    </div>
+                    <div class="row mt-1">
+                      <div class="col-lg-6 col-sm-6">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Azimuth Bulan :</label>
+                      </div>
+                      <div class="col-lg-3 col-sm-6">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="" name="az_bulan" value="" />
+                      </div>
+                      <div class="col-lg-1 col-sm-1" style="margin-left: -30px;"><p>&deg</p></div>
+                    </div>
+                    <div class="row mt-1">
+                      <div class="col-lg-6 col-sm-6">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Tinggi Hilal :</label>
+                      </div>
+                      <div class="col-lg-3 col-sm-6">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="" name="tinggi_hilal" value="" />
+                      </div>
+                      <div class="col-lg-1 col-sm-1" style="margin-left: -30px;"><p>&deg</p></div>
+                    </div>
+                    <div class="row mt-1">
+                      <div class="col-lg-6 col-sm-6">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Elongasi :</label>
+                      </div>
+                      <div class="col-lg-3 col-sm-5">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="" name="elongasi" value="" />
+                      </div>
+                      <div class="col-lg-1 col-sm-1" style="margin-left: -30px;"><p>&deg</p></div>
+                    </div>
+                    <div class="row mt-1">
+                      <div class="col-lg-6 col-sm-6">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Umur Bulan :</label>
+                      </div>
+                      <div class="col-lg-3 col-sm-6">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="HH:MM:SS" name="umur_bulan" value="" />
+                      </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-lg-6 col-sm-6">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Lag Time :</label>
+                      </div>
+                      <div class="col-lg-3 col-sm-5">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="" name="lag" value="" />
+                      </div>
+                      <div class="col-lg-2 col-sm-2 pt-2" style="margin-left: -40px;"><p>menit</p></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6 col-sm-6">
+                        <label class="mt-1" style="text-align: left; color: #fff;">Fraksi Iluminasi Bulan :</label>
+                      </div>
+                      <div class="col-lg-3 col-sm-5">
+                        <input style="text-align: left;" class="form-control" id="Input" placeholder="" name="fi_bulan" value="" />
+                      </div>
+                      <div class="col-lg-1 col-sm-1 pt-2" style="margin-left: -25px;"><p>%</p></div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-4"></div>
+                  <div class="col-4"></div>
+                  <div class="col-lg-4 float-right">
+                    <label for="Input"></label>
+                    <div class="btn-group w-100 pt-2">
+                      <button type="submit" class="btn btn-success col start">
+                        <i class="fas fa-plus"></i>
+                        <span>Submit</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); ">
+          <div class="icon-box">
+            <div class="row">
+              <table class="table" style="font-size: 14px;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th style="width: 15%;" scope="col">Bulan</th>
+                    <th style="width: 10%;" scope="col">Tanggal Obs</th>
+                    <th style="width: 12%;" scope="col">Konjungsi</th>
+                    <th style="width: 18%;" scope="col">Terbenam Matahari</th>
+                    <th style="width: 15%;" scope="col">Terbenam Bulan</th>
+                    <th style="width: 10%;" scope="col">Az. Matahari</th>
+                    <th style="width: 10%;" scope="col">Az. Bulan</th>
+                    <th style="width: 20%;" scope="col">Tinggi Hilal</th>
+                    <th style="width: 10%;" scope="col">Elongasi</th>
+                    <th style="width: 10%;" scope="col">Umur Bulan</th>
+                    <th style="width: 5%;" scope="col">Lag</th>
+                    <th style="width: 10%;" scope="col">FI Bulan</th>
+                    <th style="width: 2%;" scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for par in data %}
+                  <tr>
+                    <th scope="row">{{par.1}} {{par.2}}H</th>
+                    <td>{{par.3}}</td>
+                    <td>{{par.4}}</td>
+                    <td>{{par.5}}</td>
+                    <td>{{par.6}}</td>
+                    <td>{{par.7}}</td>
+                    <td>{{par.8}}</td>
+                    <td><b>{{par.9}}</b></td>
+                    <td>{{par.10}}</td>
+                    <td>{{par.11}}</td>
+                    <td>{{par.12}}</td>
+                    <td>{{par.13}}</td>
+                    <td>
+                      <a href="/hapushilal/{{par.0}}" class="btn btn-danger start" role="button" onclick="return confirm('Anda yakin ingin hapus?')" aria-pressed="true"> 
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+      
+
+    </div>
+    
+  </section><!-- End Hero -->
+
+  
+  {% endblock %}
+
+</html>

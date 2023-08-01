@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends 'blog_base.html' %}
+
+{% block judul %}Berita | {{berita.2}} {% endblock %}
+{% block blog_content %} 
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+        </ol>
+        <h2>Berita</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+
+            <article class="entry entry-single">
+
+              <div class="entry-img">
+                <img src="/static/upload/{{berita.6}}" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="entry-title">
+                <a href="#">{{berita.2}}</a>
+              </h2>
+
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">{{berita.5}}</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01">{{berita.1}}</time></a></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+                <p>
+                  &emsp;&emsp;{{isiberita.0}}
+                </p>
+                <p>
+                  &emsp;&emsp;{{isiberita.1}}
+                </p>
+
+                
+
+              </div>
+
+              
+
+            </article><!-- End blog entry -->
+
+            
+
+          </div><!-- End blog entries list -->
+
+          {% block sidebar %} 
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+              <h3 class="sidebar-title">Berita Terkini</h3>
+              <div class="sidebar-item recent-posts">
+                {% for berita in listberita %}
+                <div class="post-item clearfix">
+                  <img src="/static/upload/{{berita.6}}" alt="">
+                  <h4><a href="#">{{berita.2}}</a></h4>
+                  <time>{{berita.1}}</time>
+                </div>
+                {% endfor %}
+
+                
+
+              </div><!-- End sidebar recent posts-->
+
+              
+
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+          {% endblock %}
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+  {% endblock %}
+
+  
+
+</html>

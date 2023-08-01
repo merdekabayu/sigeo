@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends 'headfoot.html' %}
+
+{% block judul %}SI-GEO | Permintaan Data{% endblock %}
+
+{% block content %}
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-cntent-center">
+    <div class="container">
+      <div class="row">
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+          </i><h3 class="title pt-2" style="color: #fff;">
+            Permintaan Data dan Informasi</h3>
+        </div>
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); ">
+          <div class="icon-box">
+            <div class="mb-3 mt-3" style="width: 100%; position: relative; border-radius: 8px;">
+              <form action="/pelayanan/bertarif" method="POST" enctype = "multipart/form-data">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="row mt-4 pl-2">
+                      <div class="col-lg-6">
+                        <h5 class="mt-1 pl-4" style="font-size: 18px; text-align: left; color: #fff;">Nama Lengkap <span style="float:right;">:</span></h5>
+                      </div>
+                      <div class="col-lg-6">
+                        <input style="font-size: 14px;text-align: left;" class="form-control" id="Input" placeholder="" name="nama" value="" />
+                      </div>
+                    </div>
+                    <div class="row mt-4 pl-3">
+                      <div class="col-lg-6">
+                        <h5 class="mt-1 pl-4" style="font-size: 18px; text-align: left; color: #fff;">Alamat <span style="float:right;">:</span></h5>
+                      </div>
+                      <div class="col-lg-6">
+                        <textarea style="font-size: 14px;" class="form-control" id="exampleFormControlTextarea1" rows="3" name="alamat"></textarea>
+                      </div>
+                    </div>
+                    <div class="row mt-4 pl-3">
+                      <div class="col-lg-6">
+                        <h5 class="mt-1 pl-4" style="font-size: 18px; text-align: left; color: #fff;">Instansi / Perusahaan <span style="float:right;">:</span></h5>
+                      </div>
+                      <div class="col-lg-6">
+                        <input style="font-size: 14px;text-align: left;" class="form-control" id="Input" placeholder="" name="ptn" value="" />
+                      </div>
+                    </div>
+                    <div class="row mt-4 pl-3">
+                      <div class="col-lg-6">
+                        <h5 class="mt-1 pl-4" style="font-size: 18px; text-align: left; color: #fff;">Jenis Data <span style="float:right;">:</span></h5>
+                      </div>
+                      <div class="col-lg-6">
+                        <select name="jenis_data" style="font-size: 14px;text-align: left;" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                          <option selected>Choose...</option>
+                          <option value="Informasi Peta Kegempaan / Seismisitas">Informasi Peta Kegempaan / Seismisitas</option>
+                          <option value="Peta Tingkat Kerawanan Petir">Peta Tingkat Kerawanan Petir</option>
+                          <option value="Informasi Kejadian Petir">Informasi Kejadian Petir</option>
+                          <option value="Buku Peta Garis Batas Ketinggian Hilal">Buku Peta Garis Batas Ketinggian Hilal</option>
+                          <option value="Informasi Terbit Terbenam Matahari atau Bulan">Informasi Terbit Terbenam Matahari atau Bulan</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row mt-4 pl-3">
+                      <div class="col-lg-6">
+                        <h5 class="mt-1 pl-4" style="font-size: 18px; text-align: left; color: #fff;">No. Hp (WA) <span style="float:right;">:</span></h5>
+                      </div>
+                      <div class="col-lg-6">
+                        <input style="font-size: 14px;text-align: left;" class="form-control" id="Input" placeholder="" name="nohp" value="" />
+                      </div>
+                    </div>
+                    <div class="row mt-4 pl-3">
+                      <div class="col-lg-6">
+                        <h5 class="mt-1 pl-4" style="font-size: 18px; text-align: left; color: #fff;">Email <span style="float:right;">:</span></h5>
+                      </div>
+                      <div class="col-lg-6">
+                        <input style="font-size: 14px;text-align: left;" class="form-control" id="Input" placeholder="" name="email" value="" />
+                      </div>
+                    </div>
+                    
+                    <div class="row mt-4 pl-3">
+                      <div class="col-lg-6">
+                        <h5 class="mt-1 pl-4" style="font-size: 18px; text-align: left; color: #fff;">Berkas <span style="float:right;">:</span></h5>
+                      </div>
+                      <div class="custom-file col-lg-5" style="margin-left: 15px;">
+                        <input type="file" name="berkas" class="custom-file-input" id="customFile" value="">
+                        <label class="custom-file-label" for="customFile">*.zip / *.rar</label>
+                      </div>
+                    </div>
+
+                    <div class="row mt-0 pl-5">
+                      <div class="col-lg-7"></div>
+                      <div class="col-lg-5">
+                        <label for="Input"></label>
+                        <div class="btn-group w-100 pt-2">
+                          <button type="submit" class="btn btn-dark start bg-dark">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Kirim Permohonan</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {% with messages = get_flashed_messages(category_filter=["sukses"]) %}
+                        {% if messages %}
+                          {% for message in messages %}
+                    <div class="row mt-4 pl-3">
+                      <div class="col-lg-12 ">
+                        <div class="alert alert-success alert-dismissible fade show" style="text-align: left;" role="alert">
+                          <strong>Terimakasih!</strong><br> Permohonan anda akan kami proses secepatnya. <br> Kami akan merespon permohonan anda
+                          via WhatsApp, pastikan nomor whatsapp anda sudah benar.
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                      </div>
+                    </div>
+                        {% endfor %}
+                      {% endif %}
+                    {% endwith %}
+                    
+                  </div>
+
+                  <div class="col-lg-6 mt-4 pr-4">
+                    <div class="card" style="text-align: left;background-color:rgba(97, 150, 196, 0.745); ">
+                      <h5 class="card-header" style="color: #fff; text-align: left;">Permintaan Data</h5>
+                      <div class="card-body">
+                        <h5 style="font-size: 16px;color:#fff; text-align: left;">Produk dan tarif sesuai <a style="color:#eeff00;" href="https://cdn.bmkg.go.id/Web/5701PP_Nomor_47_Tahun_2018.pdf">PP No. 47 Tahun 2018</a> 
+                          tentang Jenis dan Tarif Atas Jenis Penerimaan Negara Bukan Pajak yang berlaku di BMKG. <a style="color:#eeff00;" href="https://www.bmkg.go.id/profil/?p=ptsp">more..</a></h5>
+                        
+                         <h5 style="font-size: 16px;color:#fff; text-align: left;">Anda dapat mengajukan permohonan data dan infomrasi dengan melampirkan beberapa berkas sebagai berikut:</h5>
+                        
+                        <ul style="font-size: 16px;color:#fff;">
+                          <li>Scan dalam format PDF, kartu identitas diri (KTP) sebagai Pemohon;</li>
+                          <li>Scan dalam format PDF, Surat Permohonan Permintaan Data resmi yang ditandatangani dan dibubuhi stempel organisasi (untuk yang mewakili organisasi/instansi. Sedangkan untuk yang mewakili individu cukup ditandatangani dengan tinta basah/bukan hasil scan);</li>
+                          <li>Menyiapkan dan mengisi Form Permintaan Informasi Publik (silahkan download formatnya dibawah);</li>
+                          <li>Menyiapkan dan mengisi Form Kontrak Kerjasama (silahkan download formatnya dibawah);</li>
+                          <li>Membuat dokumentasi kerusakan alat (apabila klaim asuransi).</li>
+                          <li>Semua berkas dikumpulkan dan diupload dalam bentuk file Zip / Rar</li>
+                        </ul>
+                        <div class="row justify-content-center"></div>
+                        <a href="{{ url_for('static', filename='forms/Form-Permintaan-Informasi-Publik.docx') }}" class="btn btn-success m-2"><i class="far fa-file"></i> Format Permintaan Informasi Publik</a>
+                        <a href="{{ url_for('static', filename='forms/Form-Kontrak-Kerjasama.docx') }}" class="btn btn-success m-2"><i class="far fa-file"></i> Format Kontrak Kerjasama</a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        
+
+        
+      </div>
+      
+      
+
+    </div>
+    
+  </section><!-- End Hero -->
+
+  
+  {% endblock %}
+
+</html>

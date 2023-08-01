@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends 'blog_base.html' %}
+
+{% block judul %}Kontak Kami{% endblock %}
+{% block blog_content %} 
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+        </ol>
+        <h2>Contact Us</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+            
+            <section id="contact" class="contact"  style="margin-top: -20px;">
+              <div class="container"  data-aos="fade-up">
+                <div class="section-title">
+                  <h2>Hubungi Kami</h2>
+                </div>
+        
+                <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
+        
+                  <div class="col-lg-5">
+                    <div class="info">
+                      <div class="address">
+                        <i class="bi bi-geo-alt"></i>
+                        <h4>Lokasi:</h4>
+                        <p>Jl. Balibunga, Kel. Tabona, Kec. Ternate Selatan, Kota Ternate</p>
+                      </div>
+        
+                      <div class="phone">
+                        <i class="fas fa-phone"></i>
+                        <h4>No. Telfon:</h4>
+                        <p>08114321108</p>
+                        <p>(0921) 3123198</p>
+                      </div>
+
+                      <div class="phone">
+                        <i class="fab fa-facebook"></i>
+                        <h4>Facebook:</h4>
+                        <p>BMKG Maluku Utara</p>
+                      </div>
+
+                      <div class="phone">
+                        <i class="fab fa-instagram"></i>
+                        <h4>Instagram:</h4>
+                        <p>@infobmkgmalut</p>
+                      </div>
+        
+                      <div class="email">
+                        <i class="bi bi-envelope"></i>
+                        <h4>Email:</h4>
+                        <p>stageof.ternate@bmkg.go.id</p>
+                      </div>
+        
+                    </div>
+        
+                  </div>
+        
+                  <div class="col-lg-7 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
+        
+                    <form action="/kirimpesan" method="post" role="form" class="php-email-form">
+                      <div class="row">
+                        <div class="col-md-6 form-group">
+                          <input type="text" name="name" class="form-control" id="name" placeholder="Nama" required>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                          <input type="text" class="form-control" name="nohp" id="name" placeholder="Nomor WhatsApp" required>
+                        </div>
+                      </div>
+                      <div class="form-group mt-3">
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                      </div>
+                      <div class="form-group mt-3">
+                        <textarea class="form-control" name="message" rows="7" placeholder="Message" required></textarea>
+                      </div>
+                      <div class="my-3">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                      </div>
+                      <div class="text-center"><button type="submit">Send Message</button></div>
+                    </form>
+        
+                  </div>
+        
+                </div>
+        
+              </div>
+            </section><!-- End Contact Section -->
+
+            <!-- <article class="entry entry-single">
+              <div class="reply-form">
+                <h4>Tinggalkan Pesan</h4>
+                <form action="">
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <input name="nama" type="text" class="form-control" placeholder="Nama Anda">
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <input name="email" type="text" class="form-control" placeholder="Nomor WhatsApp">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col form-group">
+                      <input name="website" type="text" class="form-control" placeholder="Topik">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col form-group">
+                      <textarea rows="5" name="comment" class="form-control" placeholder="Isi Pesan"></textarea>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Post Comment</button>
+
+                </form>
+
+              </div>
+            </article> -->
+
+            
+
+          </div><!-- End blog entries list -->
+
+          {% block sidebar %} 
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+              <h3 class="sidebar-title">Berita Terkini</h3>
+              <div class="sidebar-item recent-posts">
+                {% for berita in listberita %}
+                <div class="post-item clearfix">
+                  <img src="/static/upload/{{berita.6}}" alt="">
+                  <h4><a href="#">{{berita.2}}</a></h4>
+                  <time>{{berita.1}}</time>
+                </div>
+                {% endfor %}
+
+                
+
+              </div><!-- End sidebar recent posts-->
+
+              
+
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+          {% endblock %}
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+  {% endblock %}
+
+  
+
+</html>

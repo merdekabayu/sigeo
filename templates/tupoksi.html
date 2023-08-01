@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends 'blog_base.html' %}
+
+{% block judul %}Tugas dan Fungsi Stasiun Geofisika Ternate {% endblock %}
+{% block blog_content %} 
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+        </ol>
+        <h2>Tugas dan Fungsi</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+
+            <div class="entry-img">
+              <img src="/static/assets/img/kantor-bg-min.jpg" alt="" class="img-fluid">
+            </div>
+            <article class="entry entry-single">
+
+              <h2 class="entry-title">
+                <a href="#">Tugas dan Fungsi Stasiun Geofisika Ternate</a>
+              </h2>
+              <div class="entry-content">
+                <p>
+                  &emsp;&emsp;Berdasarkan Surat Keputusan Kepala Badan Meteorologi Klimatologi dan 
+                  Geofisika Nomor: KEP.005 Tahun 2005 dan peraturan Kepala Badan Meteorologi
+                  Klimatologi dan Geofisika Nomor: KEP.008 Tahun 2006 maka Stasiun  Geofisika
+                  Kelas III Ternate memiliki tugas pokok dan  fungsi. Tugas pokok Stasiun
+                  Geofisika Kelas III Ternate yaitu melakukan  pengamatan, pengumpulan dan
+                  penyebaran  data,  analisis dan pengolahan serta pelayanan jasa geofisika. Adapun
+                  fungsi dari Stasiun Geofisika Kelas III Ternate yaitu menyelenggarakan 
+                  pengamatan dan analisa/ pengolahan parameter-parameter gempabumi dan
+                  tsunami, percepatan tanah, petir atau listrik udara, dan curah hujan.
+                  
+                </p>
+
+                
+
+              </div>
+
+              
+
+            </article><!-- End blog entry -->
+
+            
+
+          </div><!-- End blog entries list -->
+
+          {% block sidebar %} 
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+              <h3 class="sidebar-title">Berita Terkini</h3>
+              <div class="sidebar-item recent-posts">
+                {% for berita in listberita %}
+                <div class="post-item clearfix">
+                  <img src="/static/upload/{{berita.6}}" alt="">
+                  <h4><a href="#">{{berita.2}}</a></h4>
+                  <time>{{berita.1}}</time>
+                </div>
+                {% endfor %}
+
+                
+
+              </div><!-- End sidebar recent posts-->
+
+              
+
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+          {% endblock %}
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+  {% endblock %}
+
+  
+
+</html>

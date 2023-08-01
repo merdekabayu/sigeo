@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="refresh" content="60">
+
+{% extends 'headfoot.html' %}
+
+{% block judul %}SI-GEO | Sistem Informasi Geofisika{% endblock %}
+{% block stakeholderaktif %}active{% endblock %}
+{% block logout %}<a href="/logout"><i style="font-size: 20px;" class="fas fa-sign-out-alt"></i></a>{% endblock %}
+
+{% block css_custom %} 
+<!-- PETIR REALTIME -->
+<link rel="stylesheet" href="{{ url_for('static', filename='libpetir/css/leaflet.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ url_for('static', filename='libpetir/css/MarkerCluster.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ url_for('static', filename='libpetir/css/custom.css') }}" type="text/css">
+
+<!-- <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/08563539-773F-EA44-9F8E-C3D0162FD305/main.js" charset="UTF-8"></script> -->
+<script type="text/javascript">function showLocalTime(a,b,c,d){if(document.getElementById&&document.getElementById(a)){this.container=document.getElementById(a),this.displayversion=d;var e="server-php"==b?'<? print date("F d, Y H:i:s", time())?>':"server-ssi"==b?'<!--#config timefmt="%B %d, %Y %H:%M:%S"--><!--#echo var="DATE_LOCAL" -->':"8/15/2018 1:56:39 PM";this.localtime=this.serverdate=new Date(e),this.localtime.setTime(this.serverdate.getTime()+60*c*1e3),this.updateTime(),this.updateContainer()}}function formatField(a,b){if("undefined"!=typeof b){var c=a>12?a-12:a;return 0==c?12:c}return a<=9?"0"+a:a}var minggutxt=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"],weekdaystxt=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],bulantxt=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"],monthstxt=["January","February","March","April","May","June","July","August","September","October","November","December"];showLocalTime.prototype.updateTime=function(){var a=this;this.localtime.setSeconds(this.localtime.getSeconds()+1),setTimeout(function(){a.updateTime()},1e3)},showLocalTime.prototype.updateContainer=function(){var a=this;if("long"==this.displayversion)this.container.innerHTML=this.localtime.toLocaleString();else{var b=this.localtime.getHours(),c=this.localtime.getMinutes(),d=this.localtime.getSeconds(),k=(this.localtime.getDate(),this.localtime.getUTCDate(),minggutxt[this.localtime.getDay()],bulantxt[this.localtime.getMonth()],weekdaystxt[this.localtime.getUTCDay()],monthstxt[this.localtime.getUTCMonth()],b+1);k>=24&&(k-=24);var l=b+2;l>=24&&(l-=24);var m=b-7;m<0&&(m+=24);this.container.innerHTML="<span class='hari-digit hidden-sm'><a href='http://jam.bmkg.go.id/' target='_blank'>Standar Waktu Indonesia</a> </span><span class='FontDigit'>"+formatField(b)+":"+formatField(c)+":"+formatField(d)+" WIB / </span><span class='FontDigit'>"+formatField(m)+":"+formatField(c)+":"+formatField(d)+" UTC</span>"}setTimeout(function(){a.updateContainer()},1e3)};
+</script>
+<script type="text/javascript">
+  if(window.top!==window.self || top != self){ window.top.location=window.self.location;top.location.replace(location);}
+</script>
+
+<style>
+  div.gallery {
+      margin: 5px;   
+      float: left;
+      width: 80px;
+  }
+  div.gallery img {
+      width: 100%;
+      height: auto;
+  }
+  
+  div.desc {
+      padding: 15px;
+      text-align: center;
+  }
+  #map {
+          position: relative;
+          border: 1px solid black;
+          border-radius: 8px;
+          height: 600px;  /* or as desired */
+          width: 100%;  /* This means "100% of the width of its container", the .col-md-8 */
+        }
+</style>
+{% endblock %}
+
+{% block content %}
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-cntent-center">
+    <div class="container">
+      
+      <div class="row">
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+          </i><h3 class="title pt-2" style="color: #fff;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-activity" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z"/>
+            </svg>
+             Gempabumi Terkini</h3>
+        </div>
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); ">
+          <div class="icon-box">
+            <div id="map1" class="mb-3 mt-3" style="width: 100%; height: 500px; position: relative; border-radius: 8px;"></div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+          </i><h3 class="title pt-2" style="color: #fff;"><i class="fas fa-bolt"></i> Sambaran Petir</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+          <div class="info-box" style="background-color:rgba(97, 150, 196, 0.538);">
+            <span class="info-box-icon bg-success elevation-1">
+              <i class="fas fa-bolt"></i>
+            </span>
+
+            <div class="info-box-content" style="color: #fff;">
+              <span class="info-box-text" ><h5><strong>Total Sambaran</strong></h5></span>
+              <span class="info-box-text">
+                <h5>{{total.0}} sambaran</h5>
+                <!-- <h5>{{jml_gempa}} sambaran</h5> -->
+              </span>
+            </div>
+            
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+          <div class="info-box" style="background-color:rgba(97, 150, 196, 0.538);">
+            <span class="info-box-icon bg-danger elevation-1">
+              <i class="fas fa-bolt"></i>
+            </span>
+
+            <div class="info-box-content" style="color: #fff;">
+              <span class="info-box-text" ><h5><strong>Cloud to Ground +</strong></h5></span>
+              <span class="info-box-text">
+                <h5>{{total.1}} sambaran</h5>
+                <!-- <h5>{{jml_gempa}} sambaran</h5> -->
+              </span>
+            </div>
+            
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+          <div class="info-box" style="background-color:rgba(97, 150, 196, 0.538);">
+            <span class="info-box-icon bg-warning elevation-1">
+              <i class="fas fa-bolt"></i>
+            </span>
+
+            <div class="info-box-content" style="color: #fff;">
+              <span class="info-box-text" ><h5><strong>Cloud to Ground -</strong></h5></span>
+              <span class="info-box-text">
+                <h5>{{total.2}} sambaran</h5>
+                <!-- <h5>{{jml_gempa}} sambaran</h5> -->
+              </span>
+            </div>
+            
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+          <div class="info-box" style="background-color:rgba(97, 150, 196, 0.538);">
+            <span class="info-box-icon bg-primary elevation-1">
+              <i class="fas fa-bolt"></i>
+            </span>
+
+            <div class="info-box-content" style="color: #fff;">
+              <span class="info-box-text" ><h5><strong>Intercloud</strong></h5></span>
+              <span class="info-box-text">
+                <h5>{{total.3}} sambaran</h5>
+                <!-- <h5>{{jml_gempa}} sambaran</h5> -->
+              </span>
+            </div>
+            
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); ">
+          <div tabindex="0" class="leaflet-container leaflet-fade-anim" id="map" style="center: 0px; top:0px; width: 100%; height: 500px; position: relative; background-color: white; background-repeat: no-repeat; background-attachment: fixed;">
+            <canvas id="pnlClockCanvas" width="220" height="30" style="z-index: 2; position:relative; left:0px; top:5px; background-repeat: no-repeat; background-attachment: fixed;">
+                      
+              Your browser does not support HTML5 Canvas.
+            </canvas>
+            <canvas id="pnlCanvas" width="245" height="330" style="z-index: 2; position:relative; left:0px; top:5px; background-repeat: no-repeat; background-attachment: fixed;">
+                      
+              Your browser does not support HTML5 Canvas.
+            </canvas>
+
+            <canvas id="pnlSymCanvas" width="245" height="65" style="z-index: 2; position:relative; left:0px; top:340px; background-repeat: no-repeat; background-attachment: fixed;">
+            
+              Your browser does not support HTML5 Canvas.
+            </canvas>
+            <script>L_PREFER_CANVAS = true;</script>
+            <script src="{{ url_for('static', filename='libpetir/lib/leaflet_073mod.js') }}"></script>
+            <script src="{{ url_for('static', filename='libpetir/lib/leaflet.markercluster.js') }}"></script>
+            <script src="{{ url_for('static', filename='libpetir/lib/Leaflet.Geodesic.js') }}"></script>
+            <script src="{{ url_for('static', filename='libpetir/lib/extentsions.js') }}"></script>
+            <script src="{{ url_for('static', filename='libpetir/lib/preLoad.js') }}"></script>
+            <script src="{{ url_for('static', filename='libpetir/lib/symbols.js') }}"></script>
+            <script src="{{ url_for('static', filename='libpetir/lib/Counter.js') }}"></script>
+            <script src="{{ url_for('static', filename='libpetir/lib/Util.js') }}"></script>
+            <script src="{{ url_for('static', filename='libpetir/lib/ClockPanel.js') }}"></script>
+            <script src="{{ url_for('static', filename='libpetir/lib/DataPanel.js') }}"></script>
+            <script src="{{ url_for('static', filename='libpetir/lib/LegendPanel.js') }}"></script>
+            <script src="{{ url_for('static', filename='libpetir/lib/LegendPanelNC.js') }}"></script>
+            <script src="{{ url_for('static', filename='libpetir/options/mapProviders.js') }}"></script>
+            <script src="{{ url_for('static', filename='libpetir/lib/main.js') }}"></script>
+        
+          </div>
+        </div>
+
+      
+      </div>
+      <div class="row">
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+          </i><h3 class="title pt-2" style="color: #fff;"><i class="fas fa-sunrise"></i> Informasi Hilal Awal Bulan {{hilal.6}}</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8" style="background-color:rgba(97, 150, 196, 0.538);border-radius:10px;">
+          <div class="row">
+            <div class="col-lg-3">
+              <img style="margin-left: -20px; height:400px; border-radius:10px;" class="d-block p-5" src="/static/assets/img/logo-hilal.png" alt="">
+            </div>
+            <div class="col-2"></div>
+            <div class="col-lg-7 pt-4">
+              <h5 class="p-3" style="font-size: 18px; color: #f6ff00; background-color:rgba(38, 59, 78, 0.538);border-radius:10px;">
+                <i class="far fa-calendar"></i>&nbsp; Waktu Pengamatan : <span style="color: #fff;">{{hilal.0}}</span>
+              </h5>
+              <h5 class="p-3" style="font-size: 18px; color: #f6ff00; background-color:rgba(38, 59, 78, 0.538);border-radius:10px;">
+                <i class="bi bi-moon"></i>&nbsp; Konjungsi Bulan : <span style="color: #fff;">{{hilal.1}} WIT</span>
+              </h5>
+              <h5 class="p-3" style="font-size: 18px; color: #f6ff00; background-color:rgba(38, 59, 78, 0.538);border-radius:10px;">
+                <i class="bi bi-sunset"></i>&nbsp; Terbenam Matahari : <span style="color: #fff;">{{hilal.2}} WIT</span>
+              </h5>
+              <h5 class="p-3" style="font-size: 18px; color: #f6ff00; background-color:rgba(38, 59, 78, 0.538);border-radius:10px;">
+                <i class="bi bi-moon-fill"></i>&nbsp; Terbenam Bulan : <span style="color: #fff;">{{hilal.3}} WIT</span>
+              </h5>
+              <h5 class="p-3" style="font-size: 18px; color: #f6ff00; background-color:rgba(38, 59, 78, 0.538);border-radius:10px;">
+                <i class="bi bi-moon-stars-fill"></i>&nbsp; Tinggi Hilal : <span style="color: #fff;"><b>{{hilal.4}} &deg;</b></span>
+              </h5>
+              <h5 class="p-3" style="font-size: 18px; color: #f6ff00; background-color:rgba(38, 59, 78, 0.538);border-radius:10px;">
+                <i class="bi bi-compass"></i>&nbsp; Posisi Bulan : <span style="font-size: 16px; color: #fff;">{{hilal.5}}</span>
+              </h5>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-2"></div>
+      </div>
+      <div class="row">
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+          </i><h3 class="title pt-2" style="color: #fff;"><i class="fas fa-sunrise"></i> Terbit dan Terbenam Matahari</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div id="heroCarousel2" style="margin-top: -25px;" data-bs-interval="3000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+          {% for sun in ttm %}
+          <!-- Slide 1 -->
+          {% if sun.0 == "Ternate" %}
+          <div class="carousel-item active">
+          {% else %}
+          <div class="carousel-item">
+          {% endif %}
+            <div class="carousel-container">
+              <h3 style="font-size: 28px; border-radius:5px; background-color:rgba(97, 150, 196, 0.538); padding-left: 140px; padding-right: 140px;" class="animate__animated animate__fadeInDown mt-4">
+                <strong>{{sun.0}}</strong>
+              </h3>
+              <div class="row mt-0" >
+                <div class="col-6" style="margin-top: -25px;">
+                  <div class="p-3 pt-0 card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+                    <i style="margin-bottom: -45px;" class="bi bi-sunrise fa-8x"></i><h4 class="animate__animated animate__fadeInUp mt-0">Sunrise</h4>
+                    <h5 class="animate__animated animate__fadeInUp mt-0">{{sun.1}} WIT</h5>
+                  </div>
+                </div>
+                <div class="col-6" style="margin-top: -25px;">
+                  <div class="p-3 pt-0 card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+                    <i style="margin-bottom: -45px;" class="bi bi-sunset fa-8x"></i><h4 class="animate__animated animate__fadeInUp mt-0">Sunset</h4>
+                    <h5 class="animate__animated animate__fadeInUp mt-0">{{sun.2}} WIT</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+    
+          
+    
+          <a class="carousel-control-prev" href="#heroCarousel2" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+          </a>
+    
+          <a class="carousel-control-next" href="#heroCarousel2" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+          </a>
+    
+        </div>
+      </div>
+
+      <div class="row pb-5">
+        <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
+          </i><h3 class="title pt-2" style="color: #fff;"><i class="fas fa-sunrise"></i>Berita</h3>
+        </div>
+      </div>
+
+      
+      <div class="row">
+        <div id="heroCarousel1" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+          <!-- Slide 1 -->
+          {% for par in berita[0] %}
+          {% if berita[1] == par[0] %}
+          <div class="carousel-item active">
+          {% else %}
+          <div class="carousel-item">
+          {% endif %}
+            <div class="carousel-container">
+              <img style="height:500px; border-radius:10px;" class="d-block" src="static/upload/{{par.6}}" alt="">
+              <div class="carousel-caption d-none d-md-block" style="background:#0000009e; border-radius:10px;">
+                <a style="color: #fff;" href="/berita/{{par.3}}"><h4 style="text-shadow:0px 4px 10px #000;">{{par.2}}</h4></a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+    
+          <a class="carousel-control-prev" href="#heroCarousel1" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+          </a>
+    
+          <a class="carousel-control-next" href="#heroCarousel1" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+          </a>
+    
+        </div>
+      </div>
+
+    </div>
+    
+  </section><!-- End Hero -->
+
+  {% endblock %}
+
+  {% block seismisitasjs %}
+  <script>
+    var icon_epic = L.icon({iconUrl: '{{ url_for('static', filename='assets/img/epc.png') }}', iconSize: [8,8]});
+    
+    {% for eq in lasteq %}
+    var lat = {{eq.3}}
+    var long = {{eq.4}}
+    var map = L.map('map1').setView([lat,long], 7);
+    {% endfor %}
+    
+    var icon_last = L.icon({iconUrl: '{{ url_for('static', filename='assets/img/earthquake.png') }}', iconSize: [40,40]});
+    
+    {% for eq in data %}
+    var lat = {{eq.3}}
+    var long = {{eq.4}}
+    L.marker([lat,long], {icon: icon_epic}).addTo(map);
+    {% endfor %}
+
+    {% for eq in lasteq %}
+    var lat = {{eq.3}}
+    var long = {{eq.4}}
+    L.marker([lat,long], {icon: icon_last},{zIndex: 5000000}).addTo(map).setZIndexOffset(1000).bindPopup("<b>{{infogempa}}<b>").openPopup();;
+    {% endfor %}
+    
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+        attribution: '&copy; <a href="https://www.bmkg.go.id">Badan Meteorologi Klimatologi dan Geofisika</a>'
+    }).addTo(map);
+  </script>
+  {% endblock %}
+
+  
+  
+
+</html>

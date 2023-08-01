@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends 'blog_base.html' %}
+
+{% block judul %}Visi dan Misi Stasiun Geofisika Ternate {% endblock %}
+{% block blog_content %} 
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+        </ol>
+        <h2>Visi dan Misi</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+
+            <div class="entry-img">
+              <img src="/static/assets/img/kantor-bg-min.jpg" alt="" class="img-fluid">
+            </div>
+            <article class="entry entry-single">
+
+              <h2 class="entry-title">
+                <a href="#">Visi dan Misi Stasiun Geofisika Ternate</a>
+              </h2>
+              <div class="entry-content">
+                <p>
+                  &emsp;&emsp;Dalam rangka mendukung dan mengemban tugas pokok dan fungsi serta memperhatikan 
+                  kewenangan BMKG agar lebih efektif dan efisien, maka diperlukan aparatur yang profesional, 
+                  bertanggung jawab dan berwibawa serta bebas dari Korupsi, Kolusi, dan Nepotisme (KKN), 
+                  disamping itu harus dapat menjunjung tinggi kedisiplinan, kejujuran dan kebenaran guna ikut serta 
+                  memberikan pelayanan informasi yang cepat, tepat dan akurat. Oleh karena itu kebijakan yang akan 
+                  dilakukan BMKG Tahun 2010-2014 adalah mengacu pada Visi, Misi, dan Tujuan BMKG yang telah ditetapkan.
+                </p>
+                <h3>Visi</h3>
+                <p>
+                  Mewujudkan BMKG yang handal, tanggap dan mampu dalam rangka mendukung keselamatan masyarakat 
+                  serta keberhasilan pembangunan nasional, dan berperan aktif di tingkat Internasional. 
+                  Terminologi di dalam visi tersebut dapat dijelaskan sebagai berikut :
+                </p>
+                <ul>
+                  <li>Pelayanan informasi meteorologi, klimatologi, kualitas udara, dan geofisika yang handal ialah 
+                    pelayanan BMKG terhadap penyajian data, informasi pelayanan jasa meteorologi, klimatologi, 
+                    kualitas udara, dan geofisika yang akurat, tepat sasaran, tepat guna, cepat, lengkap, 
+                    dan dapat dipertanggungjawabkan
+                  </li>
+                  <li>Tanggap dan mampu dimaksudkan BMKG dapat menangkap dan merumuskan kebutuhan stakeholder akan data,
+                     informasi, dan jasa meteorologi, klimatologi, kualitas udara, dan geofisika serta mampu memberikan 
+                     pelayanan sesuai dengan kebutuhan pengguna jasa
+                  </li>
+                  
+                </ul>
+
+                <h3>Misi</h3>
+                <p>
+                  Dalam rangka mewujudkan Visi BMKG, 
+                  maka diperlukan visi yang jelas yaitu berupa langkah-langkah BMKG untuk mewujudkan Misi yang telah ditetapkan yaitu :
+                </p>
+                <ul>
+                  <li>Mengamati dan memahami fenomena meteorologi, klimatologi, kualitas udara dan geofisika.
+                  </li>
+                  <li>Menyediakan data, informasi dan jasa meteorologi, klimatologi, kualitas udara dan geofisika yang handal dan terpercaya.
+                  </li>
+                  <li>Mengkoordinasikan dan memfasilitasi kegiatan di bidang meteorologi, klimatologi , kualitas udara dan geofisika.</li>
+                  <li>Berpartisipasi aktif dalam kegiatan internasional di Bidang meteorologi, klimatologi , kualitas udara dan geofisika.</li>
+                </ul>
+
+
+              </div>
+            </article><!-- End blog entry -->
+
+            
+
+          </div><!-- End blog entries list -->
+
+          {% block sidebar %} 
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+              <h3 class="sidebar-title">Berita Terkini</h3>
+              <div class="sidebar-item recent-posts">
+                {% for berita in listberita %}
+                <div class="post-item clearfix">
+                  <img src="/static/upload/{{berita.6}}" alt="">
+                  <h4><a href="#">{{berita.2}}</a></h4>
+                  <time>{{berita.1}}</time>
+                </div>
+                {% endfor %}
+
+                
+
+              </div><!-- End sidebar recent posts-->
+
+              
+
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+          {% endblock %}
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+  {% endblock %}
+
+  
+
+</html>
