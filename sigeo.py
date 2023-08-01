@@ -13,8 +13,6 @@ from werkzeug.utils import secure_filename
 import telebot
 from lockfile import LockFile
 
-#os.system('whoami')
-
 
 app = Flask(__name__)
 app.secret_key = "membuatLOginFlask1"
