@@ -1,16 +1,16 @@
-from flask import Flask, render_template, request, redirect, url_for, send_file, session, flash
-from flask_mysqldb import MySQL
+import mysql.connector
 from datetime import datetime
 
-app = Flask(__name__)
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'sigempa2023'
-app.config['MYSQL_DB'] = 'sistem_diseminasi'
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="sigempa2023",
+  auth_plugin='mysql_native_password',
+  port='33066',
+  database="sistem_diseminasi"
+)
 
-mysql = MySQL(app)
-
-cur = mysql.connection.cursor()
+cur = mydb.cursor()
 f = open('fungsi/ttm.txt', 'r')
 baris = f.readlines()
 f.close()
@@ -24,7 +24,4 @@ for i in range(len(baris)):
     datanew = tuple(data)
     cur.execute(sql_insert+str(datanew))
 
-mysql.connection.commit()
-
-if __name__ == "__main__":
-	app.run(debug=True)
+mydb.commit()
