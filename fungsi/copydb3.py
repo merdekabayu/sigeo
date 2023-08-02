@@ -7,7 +7,7 @@ yest = today - timedelta(1)
 tgl = yest.strftime('%Y%m%d')
 date = yest.strftime('%Y-%m-%d')
 f_thn = yest.strftime('%Y')
-f_bln = yest.strftime('%#m')
+f_bln = yest.strftime('%-m')
 dest_folder = f_thn+'/'+f_bln
 
 des = '~/sigempa_v2/sipetir/fungsi/data/DB3'+'/'+dest_folder
