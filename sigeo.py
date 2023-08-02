@@ -579,7 +579,7 @@ def stakeholder():
 
 
         # petir
-        hari = 14
+        hari = 7
         tdy = datetime.today()
         end = (tdy - timedelta(days=1))
         start = (tdy - timedelta(days=hari))
