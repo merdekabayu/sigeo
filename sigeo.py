@@ -502,7 +502,7 @@ def index():
         visitor = str(vis)
 
     
-    return render_template('index_new.html',vis=visitor,hilal=hilal, ttm=ttm,berita=[tabel,berita1],data=par,lasteq=last,infogempa=param, total=total,sam=sam)
+    return render_template('index_new.html',vis=visitor,hilal=hilal, ttm=[ttm,besok],berita=[tabel,berita1],data=par,lasteq=last,infogempa=param, total=total,sam=sam)
 
 def infogempa(var):
     cur = mysql.connection.cursor()
