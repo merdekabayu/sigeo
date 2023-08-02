@@ -1,7 +1,7 @@
 {
     "MapCenter": { "Lat": 0.771862, "Lon": 127.366667 },
     "StationCenter": { "Lat": 0.771862, "Lon": 127.366667 },
-    "InitialZoom": 10,
+    "InitialZoom": 9,
     "DataFileRelativePath": "static/libpetir/data",
     "DistanceUnit": "km", 
     "SymbolSet": 0,
