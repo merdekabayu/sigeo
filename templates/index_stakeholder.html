@@ -227,13 +227,13 @@
       </div>
       <div class="row">
         <div class="card text-center border-0" style="background-color:rgba(97, 150, 196, 0.538); margin-top: 30px;color: #fff;">
-          </i><h3 class="title pt-2" style="color: #fff;"><i class="fas fa-sunrise"></i> Terbit dan Terbenam Matahari</h3>
+          </i><h3 class="title pt-2" style="color: #fff;"><i class="fas fa-sunrise"></i> Terbit dan Terbenam Matahari Tanggal {{ttm.1}}</h3>
         </div>
       </div>
       <div class="row">
         <div id="heroCarousel2" style="margin-top: -25px;" data-bs-interval="3000" class="container carousel carousel-fade" data-bs-ride="carousel">
 
-          {% for sun in ttm %}
+          {% for sun in ttm.0 %}
           <!-- Slide 1 -->
           {% if sun.0 == "Ternate" %}
           <div class="carousel-item active">

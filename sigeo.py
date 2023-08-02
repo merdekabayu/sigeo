@@ -698,7 +698,7 @@ def stakeholder():
 
         
         
-        return render_template('index_stakeholder.html',vis=visitor,hilal=hilal, ttm=ttm,berita=[tabel,berita1],data=par,lasteq=last,infogempa=param, total=total,sam=sam)
+        return render_template('index_stakeholder.html',vis=visitor,hilal=hilal, ttm=[ttm,besok],berita=[tabel,berita1],data=par,lasteq=last,infogempa=param, total=total,sam=sam)
     else:
         flash("Please, Login First !!")
         return redirect(url_for('login'))
