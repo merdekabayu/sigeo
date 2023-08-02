@@ -17,4 +17,4 @@ else:
     makedirs(des)
     print('folder created!')
 
-os.system('cp -r /home/ftpternate/DB3/'+tgl+'.db3 '+des)
+os.system('cp -r /home/ftpternate/data/DB3/'+tgl+'.db3 '+des)
