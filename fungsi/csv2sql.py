@@ -6,7 +6,7 @@ mydb = mysql.connector.connect(
   user="root",
   password="sigempa2023",
   auth_plugin='mysql_native_password',
-  port='33066',
+#   port='33066',
   database="sistem_diseminasi"
 )
 
