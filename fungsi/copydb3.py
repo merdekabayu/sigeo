@@ -10,7 +10,7 @@ f_thn = yest.strftime('%Y')
 f_bln = yest.strftime('%-m')
 dest_folder = f_thn+'/'+f_bln
 
-des = os.path.join('/root/sigempa_v2/sipetir/fungsi/data/DB3', +dest_folder)
+des = os.path.join('/root/sigempa_v2/sipetir/fungsi/data/DB3', dest_folder)
 # des = '/root/sigempa_v2/sipetir/fungsi/data/DB3'+'/'+dest_folder
 
 if path.exists(des):
