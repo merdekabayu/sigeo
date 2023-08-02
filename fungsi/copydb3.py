@@ -14,7 +14,7 @@ des = '~/sigempa_v2/sipetir/fungsi/data/DB3'+'/'+dest_folder
 if path.exists(des):
     print('folder '+des+' ready!')
 else:
-    makedirs(des)
+    os.system('mkdir '+des)
     print('folder created!')
 
 os.system('cp -r /home/ftpternate/ftp/DB3/'+tgl+'.db3 '+des)
