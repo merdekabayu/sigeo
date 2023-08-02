@@ -1,3 +1,16 @@
+from flask import Flask, render_template, request, redirect, url_for, send_file, session, flash
+from flask_mysqldb import MySQL
+from datetime import datetime
+
+app = Flask(__name__)
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'sigempa2023'
+app.config['MYSQL_DB'] = 'sistem_diseminasi'
+
+mysql = MySQL(app)
+
+cur = mysql.connection.cursor()
 f = open('fungsi/ttm.txt', 'r')
 baris = f.readlines()
 f.close()
@@ -12,3 +25,6 @@ for i in range(len(baris)):
     cur.execute(sql_insert+str(datanew))
 
 mysql.connection.commit()
+
+if __name__ == "__main__":
+	app.run(debug=True)
