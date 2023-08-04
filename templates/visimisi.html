@@ -27,7 +27,7 @@
           <div class="col-lg-8 entries">
 
             <div class="entry-img">
-              <img src="/static/assets/img/kantor-bg-min_new.png" alt="" class="img-fluid">
+              <img src="/static/assets/img/kantor-bg-min_new_low.png" alt="" class="img-fluid">
             </div>
             <article class="entry entry-single">
 
@@ -93,7 +93,7 @@
                 {% for berita in listberita %}
                 <div class="post-item clearfix">
                   <img src="/static/upload/{{berita.6}}" alt="">
-                  <h4><a href="#">{{berita.2}}</a></h4>
+                  <h4><a href="/berita/{{berita.3}}">{{berita.2}}</a></h4>
                   <time>{{berita.1}}</time>
                 </div>
                 {% endfor %}
