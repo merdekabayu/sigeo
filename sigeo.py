@@ -359,6 +359,13 @@ def submit():
         return redirect(url_for('login'))
     
 
+@app.route('/petirbitung')
+def petirbitung():
+    if 'user_stakeholder' in session or 'user' in session:
+        return render_template('petirbitung.html')
+    else:
+        flash("Please, Login First !!")
+        return redirect(url_for('login'))
 
 
 @app.route('/')

@@ -1,0 +1,22 @@
+{
+    "MapCenter": { "Lat": 1.443, "Lon": 125.18 },
+    "StationCenter": { "Lat": 1.443, "Lon": 125.18 },
+    "InitialZoom": 9,
+    "DataFileRelativePath": "static/libpetir/databitung",
+    "DistanceUnit": "km", 
+    "SymbolSet": 0,
+    "NumRings": 6,
+    "FirstRing": 10,
+    "RingSpacing": 10,
+    "RingColor": "orange",
+    "DrawLabels": true,
+    "PanelOpacity": 0.75,
+    "MapProvider": 10,
+    "MapProviderOverlay": -1,
+    "StrikeHistoryMinutes": 30,
+    "GraphHistoryMinutes": 30,
+    "DataSource": "NexStorm",
+    "HideUncorrelated": false,
+    "ShowTypes": true,
+    "ClusteringMinZoom": 6
+}
