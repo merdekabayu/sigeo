@@ -4,7 +4,10 @@
 {% extends 'blog_base.html' %}
 
 {% block judul %}Berita | {{berita.2}} {% endblock %}
-{% block thumbnail %}/static/upload/{{berita.6}}{% endblock %}
+{% block thumbnail %}
+<meta property="og:image" itemprop="image" content="https://sigeo.stageofternate.com/static/upload/{{berita.6}}">
+<link href="https://sigeo.stageofternate.com/static/upload/{{berita.6}}" rel="icon">
+{% endblock %}
 {% block blog_content %} 
   <main id="main">
 
