@@ -472,7 +472,7 @@ def index():
 
 
     # HILAL
-    now = now.replace(month=8,day=1,hour=0,minute=0,second=0,microsecond=0)
+    now = now.replace(hour=0,minute=0,second=0,microsecond=0)
     d30 = (now + timedelta(days=30))
     sql_filter = "SELECT * FROM `hilal` WHERE `t_obs` BETWEEN %s AND %s ORDER BY `t_obs` ASC"
     condition = (now,d30)
