@@ -472,11 +472,12 @@ def index():
 
 
     # HILAL
-    now = now.replace(hour=0,minute=0,second=0,microsecond=0)
-    d30 = (now + timedelta(days=30))
-    sql_filter = "SELECT * FROM `hilal` WHERE `t_obs` BETWEEN %s AND %s ORDER BY `t_obs` ASC"
-    condition = (now,d30)
-    cur.execute(sql_filter, condition)
+    # now = now.replace(hour=0,minute=0,second=0,microsecond=0)
+    # d30 = (now + timedelta(days=30))
+    # sql_filter = "SELECT * FROM `hilal` WHERE `t_obs` BETWEEN %s AND %s ORDER BY `t_obs` ASC"
+    # condition = (now,d30)
+    cur.execute("SELECT * FROM hilal ORDER BY 4 DESC LIMIT 1")
+    # cur.execute(sql_filter, condition)
     hilal = cur.fetchall()
     datahilal = hilal[0]
     print(datahilal)
